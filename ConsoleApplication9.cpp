@@ -62,7 +62,7 @@ int main() {
 			}
 			cin >> k;
 			if (flag == 1 && k == 'o') {
-				continue;
+				continue;;
 			}
 			else if (flag == 0 && k == 'x') {
 				continue;
