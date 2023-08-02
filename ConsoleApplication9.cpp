@@ -27,87 +27,124 @@ int check(vector <vector <char>> a) {
 	}
 		return 0;
 }
-/*int otr(vector <vector <char>> a) {
-	cout << string(100, ' ');
-	cout << "_______";
-	cout << "|" << a[0][0] << "|" << a[0][1] << "|" << a[0][2] << "|";
-	cout << "_______";
-	cout << "|" << a[1][0] << "|" << a[1][1] << "|" << a[1][2] << "|";
-	cout << "_______";
-	cout << "|" << a[2][0] << "|" << a[2][1] << "|" << a[2][2] << "|";
-	cout << "_______";
-}*/
-// создать функцию отрисовки с обн экрана 
-// цикл (бесконечный) вводить 2 координаты и в зависимости от четности ходо ставить туда крестик или нолик , сделать проверку коректности хода 
-// на каждом этапе заного отрисовываьть 
 int main() {
-	vector <vector <char>> a (4);
-	for (int i = 1; i <= 3; ++i) {
-		for (int j = 1; j <= 4; ++j) {
-			char s = '.';
-			a[i].push_back(s);
-		}
-	}
-	bool flag = 1;
+	int chtx = 0;
+	int chto = 0;
 	while (true) {
-		int z, y;
-		cin >> z >> y;
-		if (z <= 3 && z > 0 && y <= 3 && y > 0) {
-			char k;
+		vector <vector <char>> a(4);
+		for (int i = 1; i <= 3; ++i) {
+			for (int j = 1; j <= 4; ++j) {
+				char s = '.';
+				a[i].push_back(s);
+			}
+		}
+		bool flag = 1;
+		while (true) {
 			if (flag == 1) {
 				cout << "shas krestiky";
 			}
 			else if (flag == 0) {
 				cout << "shas noliky";
 			}
-			cin >> k;
-			if (flag == 1 && k == 'o') {
-				continue;;
+			cout << endl;
+			int z, y;
+			cin >> z >> y;
+			if (z <= 3 && z > 0 && y <= 3 && y > 0) {
+				if (flag == 1 && a[z][y] == '.') {
+					a[z][y] = 'x';
+					flag = 0;
+				}
+				else if (flag == 0 && a[z][y] == '.') {
+					a[z][y] = 'o';
+					flag = 1;
+				}
+				else {
+					continue;
+				}
 			}
-			else if (flag == 0 && k == 'x') {
-				continue;
+			int m = 100;
+			while (m--) {
+				cout << endl;
 			}
-			if (k == 'x' && a[z][y] == '.') {
-				a[z][y] = 'x';
-				flag = 0;
+			int m2 = 50;
+			while (m2--) {
+				cout << ' ';
 			}
-			else if (k == 'o' && a[z][y] == '.') {
-				a[z][y] = 'o';
-				flag = 1;
+			cout << "_______\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "|" << a[1][1] << "|" << a[1][2] << "|" << a[1][3] << "|\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "_______\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "|" << a[2][1] << "|" << a[2][2] << "|" << a[2][3] << "|\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "_______\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "|" << a[3][1] << "|" << a[3][2] << "|" << a[3][3] << "|\n";
+			m2 = 50;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "_______\n";
+
+			int m1 = 10;
+			while (m1--) {
+				cout << endl;
+			}
+			int l = check(a);
+			if (l == 1) {
+				cout << "kresty viigraly";
+				chtx++;
+				cout << endl << "shet o = " << chto << " shet x = " << chtx;
+				int m4 = 20;
+				while (m4--) {
+					cout << endl;
+				}
+				break;
+			}
+			else if (l == 2) {
+				cout << "nyly viigraly";
+				chto++;
+				cout << endl << "shet o = " << chto << " shet x = " << chtx;
+				int m4 = 20;
+				while (m4--) {
+					cout << endl;
+				}
+				break;
+			}
+			else if (l == 3) {
+				cout << "nycha";
+				cout << endl << "shet o = " << chto << " shet x = " << chtx;
+				int m4 = 20;
+				while (m4--) {
+					cout << endl;
+				}
+				break;
 			}
 			else {
 				continue;
 			}
 		}
-		int m = 100;
-		while (m--) {
-			cout << endl;
-		}
-		
-		cout << "_______\n";
-		cout << "|" << a[1][1] << "|" << a[1][2] << "|" << a[1][3] << "|\n";
-		cout << "_______\n";
-		cout << "|" << a[2][1] << "|" << a[2][2] << "|" << a[2][3] << "|\n";
-		cout << "_______\n";
-		cout << "|" << a[3][1] << "|" << a[3][2] << "|" << a[3][3] << "|\n";
-		cout << "_______\n";
-
-		int l = check(a);
-		if (l == 1) {
-			cout << "kresty viigraly";
+		string z;
+		cin >> z;
+		if (z == "end") {
 			return 0;
 		}
-		else if (l == 2) {
-			cout << "nyly viigraly";
-			return 0;
-		}
-		else if (l == 3) {
-			cout << "nycha";
-			return 0;
-		}
-		else {
-			continue;
-		}
+		else continue;
 	}
- 	
 }
