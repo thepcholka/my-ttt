@@ -32,10 +32,12 @@ int main() {
 	int chto = 0;
 	while (true) {
 		vector <vector <char>> a(4);
+		int uq = -3;
 		for (int i = 1; i <= 3; ++i) {
 			for (int j = 1; j <= 4; ++j) {
-				char s = '.';
+				char s = uq;
 				a[i].push_back(s);
+				uq++;
 			}
 		}
 		bool flag = 1;
@@ -66,44 +68,48 @@ int main() {
 			while (m--) {
 				cout << endl;
 			}
-			int m2 = 70;
+			int m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "|" << a[1][1] << "|" << a[1][2] << "|" << a[1][3] << "|\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "|" << a[2][1] << "|" << a[2][2] << "|" << a[2][3] << "|\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "|" << a[3][1] << "|" << a[3][2] << "|" << a[3][3] << "|\n";
-			m2 = 70;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
 
-			int m1 = 10;
+			int m1 = 5;
 			while (m1--) {
+				cout << endl;
+			}
+			int m5 = 5;
+			while (m5--) {
 				cout << endl;
 			}
 			int l = check(a);
@@ -111,7 +117,7 @@ int main() {
 				cout << "kresty viigraly";
 				chtx++;
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -121,7 +127,7 @@ int main() {
 				cout << "nyly viigraly";
 				chto++;
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -130,7 +136,7 @@ int main() {
 			else if (l == 3) {
 				cout << "nycha";
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -140,11 +146,44 @@ int main() {
 				continue;
 			}
 		}
-		string z;
-		cin >> z;
-		if (z == "end") {
+		cout << "zakonchit igru?\n";
+		cout << "da ili net";
+		int q7 = 15;
+		while (q7--) {
+			cout << endl;
+		}
+		string kq;
+		cin >> kq;
+		int q = 15;
+		while (q--) {
+			cout << endl;
+		}
+		if (kq == "da") {
+			int q1 = 30;
+			while (q1--) {
+				cout << ' ';
+			}
+			cout << endl << "shet o = " << chto << " shet x = " << chtx;
+			int q = 15;
+			while (q--) {
+				cout << endl;
+			}
 			return 0;
 		}
-		else continue;
+		else if (kq == "net") {
+			continue;
+		}
+		else {
+			int q1 = 60;
+			while (q1--) {
+				cout << ' ';
+			}
+			cout << endl << "shet o = " << chto << " shet x = " << chtx;
+			int q = 30;
+			while (q--) {
+				cout << endl;
+			}
+			return 0;
+		}
 	}
 }
