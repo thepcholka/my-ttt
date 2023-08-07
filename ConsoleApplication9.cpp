@@ -8,16 +8,16 @@ using namespace std;
 
 int check(vector <vector <char>> a) {
 	// проверить правильность записи на доске 
-	if (a[1][1] == 'x' && a[2][2] == 'x' && a[3][3] == 'x' || a[1][3] == 'x' && a[2][2] == 'x' && a[3][1] == 'x' || a[1][1] == 'x' && a[1][2] == 'x' && a[1][3] == 'x' || a[2][1] == 'x' && a[2][2] == 'x' && a[2][3] == 'x' || a[3][1] == 'x' && a[3][2] == 'x' && a[3][3] == 'x' || a[1][1] == 'x' && a[2][1] == 'x' && a[3][1] == 'x' || a[1][2] == 'x' && a[2][2] == 'x' && a[3][2] == 'x' || a[1][3] == 'x' && a[2][3] == 'x' && a[3][3] == 'x') {
+	if (a[0][0] == 'x' && a[1][1] == 'x' && a[2][2] == 'x' || a[0][2] == 'x' && a[1][1] == 'x' && a[2][0] == 'x' || a[0][0] == 'x' && a[0][1] == 'x' && a[0][2] == 'x' || a[1][0] == 'x' && a[1][1] == 'x' && a[1][2] == 'x' || a[2][0] == 'x' && a[2][1] == 'x' && a[2][2] == 'x' || a[0][0] == 'x' && a[1][0] == 'x' && a[2][0] == 'x' || a[0][1] == 'x' && a[1][1] == 'x' && a[2][1] == 'x' || a[0][2] == 'x' && a[1][2] == 'x' && a[2][2] == 'x') {
 		return 1;
 	}
-	else if (a[1][1] == 'o' && a[2][2] == 'o' && a[3][3] == 'o' || a[1][3] == 'o' && a[2][2] == 'o' && a[3][1] == 'o' || a[1][1] == 'o' && a[1][2] == 'o' && a[1][3] == 'o' || a[2][1] == 'o' && a[2][2] == 'o' && a[2][3] == 'o' || a[3][1] == 'o' && a[3][2] == 'o' && a[3][3] == 'o' || a[1][1] == 'o' && a[2][1] == 'o' && a[3][1] == 'o' || a[1][2] == 'o' && a[2][2] == 'o' && a[3][2] == 'o' || a[1][3] == 'o' && a[2][3] == 'o' && a[3][3] == 'o') {
+	else if (a[0][0] == 'o' && a[1][1] == 'o' && a[2][2] == 'o' || a[0][2] == 'o' && a[1][1] == 'o' && a[2][0] == 'o' || a[0][0] == 'o' && a[0][1] == 'o' && a[0][2] == 'o' || a[1][0] == 'o' && a[1][1] == 'o' && a[1][2] == 'o' || a[2][0] == 'o' && a[2][1] == 'o' && a[2][2] == 'o' || a[0][0] == 'o' && a[1][0] == 'o' && a[2][0] == 'o' || a[0][1] == 'o' && a[1][1] == 'o' && a[2][1] == 'o' || a[0][2] == 'o' && a[1][2] == 'o' && a[2][2] == 'o') {
 		return 2;
 	}
 	int cht = 0;
-	for (int i = 1; i <=  3; ++i) {
-		for (int j = 1; j <= 3; ++j) {
-			if (a[i][j] != '.') {
+	for (int i = 0; i <  3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			if (!(a[i][j] > '0' && a[i][j] < '9' + 1)) {
 				cht++;
 			}
 			if (cht==9) {
@@ -27,18 +27,120 @@ int check(vector <vector <char>> a) {
 	}
 		return 0;
 }
+
+int cordi(int z) {
+	if (z == 1) {
+		return 0;
+	}
+	if (z == 2) {
+		return 0;
+	}
+	if (z == 3) {
+		return 0;
+	}
+	if (z == 4) {
+		return 1;
+	}
+	if (z == 5) {
+		return 1;
+	}
+	if (z == 6) {
+		return 1;
+	}
+	if (z == 7) {
+		return 2;
+	}
+	if (z == 8) {
+		return 2;
+	}
+	if (z == 9) {
+		return 2;
+	}
+}
+
+int cordi1(int z) {
+	if (z == 1) {
+		return 0;
+	}
+	if (z == 2) {
+		return 1;
+	}
+	if (z == 3) {
+		return 2;
+	}
+	if (z == 4) {
+		return 0;
+	}
+	if (z == 5) {
+		return 1;
+	}
+	if (z == 6) {
+		return 2;
+	}
+	if (z == 7) {
+		return 0;
+	}
+	if (z == 8) {
+		return 1;
+	}
+	if (z == 9) {
+		return 2;
+	}
+}
 int main() {
 	int chtx = 0;
 	int chto = 0;
 	while (true) {
-		vector <vector <char>> a(4);
-		for (int i = 1; i <= 3; ++i) {
-			for (int j = 1; j <= 4; ++j) {
-				char s = '.';
+		vector <vector <char>> a(3);
+		int uq = '1';
+		for (int i = 0; i < 3; ++i) {
+			for (int j = 0; j < 3; ++j) {
+				char s = uq;
 				a[i].push_back(s);
+				uq++;
 			}
 		}
 		bool flag = 1;
+		int m = 100;
+		while (m--) {
+			cout << endl;
+		}
+		int m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "_______\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "|" << a[0][0] << "|" << a[0][1] << "|" << a[0][2] << "|\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "_______\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "|" << a[1][0] << "|" << a[1][1] << "|" << a[1][2] << "|\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "_______\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "|" << a[2][0] << "|" << a[2][1] << "|" << a[2][2] << "|\n";
+		m2 = 55;
+		while (m2--) {
+			cout << ' ';
+		}
+		cout << "_______\n";
+
 		while (true) {
 			if (flag == 1) {
 				cout << "shas krestiky";
@@ -47,63 +149,68 @@ int main() {
 				cout << "shas noliky";
 			}
 			cout << endl;
-			int z, y;
-			cin >> z >> y;
-			if (z <= 3 && z > 0 && y <= 3 && y > 0) {
-				if (flag == 1 && a[z][y] == '.') {
-					a[z][y] = 'x';
-					flag = 0;
-				}
-				else if (flag == 0 && a[z][y] == '.') {
-					a[z][y] = 'o';
-					flag = 1;
-				}
-				else {
-					continue;
-				}
+			int z;
+			cin >> z;
+			int z1 = cordi(z);
+			int y = cordi1(z);
+			if (flag == 1 && a[z1][y] > '0' && a[z1][y] < '9' + 1) {
+				a[z1][y] = 'x';
+				flag = 0;
 			}
+			else if (flag == 0 && a[z1][y] > '0' && a[z1][y] < '9' + 1) {
+				a[z1][y] = 'o';
+				flag = 1;
+			}
+			else {
+				continue;
+			}
+			
 			int m = 100;
 			while (m--) {
 				cout << endl;
 			}
-			int m2 = 50;
+			int m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
-			m2 = 50;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
-			cout << "|" << a[1][1] << "|" << a[1][2] << "|" << a[1][3] << "|\n";
-			m2 = 50;
-			while (m2--) {
-				cout << ' ';
-			}
-			cout << "_______\n";
-			m2 = 50;
-			while (m2--) {
-				cout << ' ';
-			}
-			cout << "|" << a[2][1] << "|" << a[2][2] << "|" << a[2][3] << "|\n";
-			m2 = 50;
+			cout << "|" << a[0][0] << "|" << a[0][1] << "|" << a[0][2] << "|\n";
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
-			m2 = 50;
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
-			cout << "|" << a[3][1] << "|" << a[3][2] << "|" << a[3][3] << "|\n";
-			m2 = 50;
+			cout << "|" << a[1][0] << "|" << a[1][1] << "|" << a[1][2] << "|\n";
+			m2 = 55;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "_______\n";
+			m2 = 55;
+			while (m2--) {
+				cout << ' ';
+			}
+			cout << "|" << a[2][0] << "|" << a[2][1] << "|" << a[2][2] << "|\n";
+			m2 = 55;
 			while (m2--) {
 				cout << ' ';
 			}
 			cout << "_______\n";
 
-			int m1 = 10;
+			int m1 = 5;
 			while (m1--) {
+				cout << endl;
+			}
+			int m5 = 5;
+			while (m5--) {
 				cout << endl;
 			}
 			int l = check(a);
@@ -111,7 +218,7 @@ int main() {
 				cout << "kresty viigraly";
 				chtx++;
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -121,7 +228,7 @@ int main() {
 				cout << "nyly viigraly";
 				chto++;
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -130,7 +237,7 @@ int main() {
 			else if (l == 3) {
 				cout << "nycha";
 				cout << endl << "shet o = " << chto << " shet x = " << chtx;
-				int m4 = 20;
+				int m4 = 70;
 				while (m4--) {
 					cout << endl;
 				}
@@ -140,11 +247,44 @@ int main() {
 				continue;
 			}
 		}
-		string z;
-		cin >> z;
-		if (z == "end") {
+		cout << "zakonchit igru?\n";
+		cout << "da ili net";
+		int q7 = 15;
+		while (q7--) {
+			cout << endl;
+		}
+		string kq;
+		cin >> kq;
+		int q = 15;
+		while (q--) {
+			cout << endl;
+		}
+		if (kq == "da") {
+			int q1 = 30;
+			while (q1--) {
+				cout << ' ';
+			}
+			cout << endl << "shet o = " << chto << " shet x = " << chtx;
+			int q = 15;
+			while (q--) {
+				cout << endl;
+			}
 			return 0;
 		}
-		else continue;
+		else if (kq == "net") {
+			continue;
+		}
+		else {
+			int q1 = 60;
+			while (q1--) {
+				cout << ' ';
+			}
+			cout << endl << "shet o = " << chto << " shet x = " << chtx;
+			int q = 30;
+			while (q--) {
+				cout << endl;
+			}
+			return 0;
+		}
 	}
 }
