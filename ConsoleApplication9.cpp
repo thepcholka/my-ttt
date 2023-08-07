@@ -17,7 +17,7 @@ int check(vector <vector <char>> a) {
 	int cht = 0;
 	for (int i = 0; i <  3; ++i) {
 		for (int j = 0; j < 3; ++j) {
-			if (a[i][j] > '0' && a[i][j] < '9' + 1) {
+			if (!(a[i][j] > '0' && a[i][j] < '9' + 1)) {
 				cht++;
 			}
 			if (cht==9) {
@@ -50,7 +50,7 @@ int cordi(int z) {
 	if (z == 7) {
 		return 2;
 	}
-	if (z == 7) {
+	if (z == 8) {
 		return 2;
 	}
 	if (z == 9) {
@@ -80,7 +80,7 @@ int cordi1(int z) {
 	if (z == 7) {
 		return 0;
 	}
-	if (z == 7) {
+	if (z == 8) {
 		return 1;
 	}
 	if (z == 9) {
